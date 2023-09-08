@@ -1,7 +1,7 @@
 import { AppShell, Header } from '@mantine/core';
 import { Outlet, useParams } from 'react-router-dom';
 import { HeaderMenu } from '../components/HeaderMenu/ui/HeaderMenu';
-import { routes } from '../configs/routes';
+import { routes } from '../context/router';
 import NotFoundPage from '../pages/NotFoundPage';
 
 export default function IndexLayout() {

@@ -1,4 +1,4 @@
-import { routes } from '../../../configs/routes';
+import { routes } from '../../../context/router';
 
 const addLinks = (links, data) => {
   if (data.link) {

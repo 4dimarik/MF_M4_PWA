@@ -20,11 +20,7 @@ function ThemeToggle() {
               : theme.colors.blue[6],
         })}
       >
-        {colorScheme === 'dark' ? (
-          <IconSun size="1.2rem" />
-        ) : (
-          <IconMoonStars size="1.2rem" />
-        )}
+        {colorScheme === 'dark' ? <IconSun /> : <IconMoonStars />}
       </ActionIcon>
     </Group>
   );

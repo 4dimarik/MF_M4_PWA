@@ -1,6 +1,14 @@
 import { NavLink, useOutletContext, useParams } from 'react-router-dom';
 import moment from 'moment';
-import { Flex, Avatar, Text, Group, Button } from '@mantine/core';
+import {
+  Flex,
+  Avatar,
+  Text,
+  Group,
+  Button,
+  AspectRatio,
+  Box,
+} from '@mantine/core';
 import { useFetch } from '../hooks/useFetch';
 import BackBtn from '../components/BackBtn';
 
@@ -61,20 +69,28 @@ export default function CategoryItemPage() {
       </Flex>
       {!isLoading && (
         <Flex justify="center">
-          <Group noWrap>
-            {obj?.image && <Avatar src={obj.image} size={350} radius="md" />}
-            <div>
+          <Group w="100%">
+            {obj?.image && (
+              <AspectRatio ratio={1 / 1} maw={300} mx="auto" sx={{ flex: 1 }}>
+                <Avatar src={obj.image} radius="md" />
+              </AspectRatio>
+            )}
+            <Box maw="100%">
               {Object.keys(obj).map((item) => (
                 <Flex key={item} align="center">
                   <Text fz="md" mr={8} c="dimmed">
                     {item}
                   </Text>
-                  <Text fz="md" fw={500}>
+                  <Text
+                    fz="md"
+                    fw={500}
+                    sx={{ display: 'inline-block', wordBreak: 'break-word' }}
+                  >
                     {getValue(item, obj[item], category)}
                   </Text>
                 </Flex>
               ))}
-            </div>
+            </Box>
           </Group>
         </Flex>
       )}

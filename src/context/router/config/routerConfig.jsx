@@ -1,7 +1,6 @@
 import { lazy } from 'react';
-import { routes } from '../../../configs/routes';
+import { routes } from '../routes';
 import IndexLayout from '../../../layouts/IndexLayout';
-
 const MainPage = lazy(() => import('../../../pages/MainPage'));
 const CategoryPage = lazy(() => import('../../../pages/CategoryPage'));
 const CategoryItemPage = lazy(() => import('../../../pages/CategoryItemPage'));
@@ -31,6 +30,11 @@ const routerConfig = [
   {
     path: '/login',
     element: <SignInPage />,
+    suspense: true,
+  },
+  {
+    path: '404',
+    element: <NotFoundPage />,
     suspense: true,
   },
   {

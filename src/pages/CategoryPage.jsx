@@ -1,5 +1,5 @@
 import { useOutletContext, useNavigate, useLocation } from 'react-router-dom';
-import { routes } from '../configs/routes';
+import { routes } from '../context/router';
 import { List } from '../components/ListComponent';
 import moment from 'moment/moment';
 import { Loader } from '@mantine/core';

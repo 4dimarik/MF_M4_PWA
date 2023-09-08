@@ -22,10 +22,6 @@ const useStyles = createStyles((theme) => ({
       backgroundColor:
         theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.white,
     },
-
-    [theme.fn.smallerThan('xs')]: {
-      display: 'none',
-    },
   },
   userActive: {
     backgroundColor:

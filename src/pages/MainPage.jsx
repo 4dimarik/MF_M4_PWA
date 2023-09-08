@@ -6,7 +6,7 @@ export default function MainPage() {
       <Image
         mx="auto"
         fit="contain"
-        src="/Rick-And-Morty-Logo.png"
+        src="assets/Rick-And-Morty-Logo.png"
         alt="Rick-And-Morty-Logo"
       />
     </Flex>
