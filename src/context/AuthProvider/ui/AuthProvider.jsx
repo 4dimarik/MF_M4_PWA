@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { createContext, useEffect } from 'react';
 import { useLocalStorage } from '@mantine/hooks';
 import PropTypes from 'prop-types';
 import { Loader, Flex } from '@mantine/core';
@@ -8,8 +8,10 @@ const AuthContext = createContext(null);
 function AuthProvider({ children }) {
   const [user, setValue, removeValue] = useLocalStorage({
     key: 'user',
-    defaultValue: undefined,
   });
+  useEffect(() => {
+    if (user === undefined) setValue(null);
+  }, [user]);
 
   const signin = (newUser, callback) => {
     setValue(newUser);
@@ -26,6 +28,8 @@ function AuthProvider({ children }) {
     signin,
     signout,
   };
+
+  console.log(user);
 
   const element =
     user === undefined ? (
