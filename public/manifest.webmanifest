@@ -1,7 +1,7 @@
 {
   "name": "Rick and Morty",
   "short_name": "R&M",
-  "start_url": "/index.html",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#fafafa",
   "lang": "en",
