@@ -1,4 +1,10 @@
-import { NavLink, useOutletContext, useParams } from 'react-router-dom';
+import {
+  NavLink,
+  useOutletContext,
+  useParams,
+  useNavigate,
+  Navigate,
+} from 'react-router-dom';
 import moment from 'moment';
 import {
   Flex,
@@ -11,6 +17,7 @@ import {
 } from '@mantine/core';
 import { useFetch } from '../hooks/useFetch';
 import BackBtn from '../components/BackBtn';
+import { Loader } from '@mantine/core';
 
 const getValue = (fieldName, value, category) => {
   switch (fieldName) {
@@ -38,14 +45,19 @@ const getValue = (fieldName, value, category) => {
 };
 
 export default function CategoryItemPage() {
+  const navigate = useNavigate();
   const { id } = useParams();
   const { category, endpoint } = useOutletContext();
 
-  const { data: obj, isLoading } = useFetch(
-    'https://rickandmortyapi.com/api/' + endpoint + `/${id}`
-  );
+  const {
+    data: obj,
+    isLoading,
+    error,
+  } = useFetch('https://rickandmortyapi.com/api/' + endpoint + `/${id}`);
 
-  return (
+  return error ? (
+    <Navigate to="/404" replace />
+  ) : (
     <>
       <Flex
         justify="end"
@@ -67,7 +79,11 @@ export default function CategoryItemPage() {
           </BackBtn>
         </Group>
       </Flex>
-      {!isLoading && (
+      {isLoading ? (
+        <Flex justify="center">
+          <Loader variant="bars" />
+        </Flex>
+      ) : (
         <Flex justify="center">
           <Group w="100%">
             {obj?.image && (

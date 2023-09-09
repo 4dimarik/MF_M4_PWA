@@ -1,13 +1,14 @@
 import { createContext } from 'react';
 import { useLocalStorage } from '@mantine/hooks';
 import PropTypes from 'prop-types';
+import { Loader, Flex } from '@mantine/core';
 
 const AuthContext = createContext(null);
 
 function AuthProvider({ children }) {
   const [user, setValue, removeValue] = useLocalStorage({
     key: 'user',
-    defaultValue: null,
+    defaultValue: undefined,
   });
 
   const signin = (newUser, callback) => {
@@ -26,7 +27,16 @@ function AuthProvider({ children }) {
     signout,
   };
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  const element =
+    user === undefined ? (
+      <Flex justify="center">
+        <Loader variant="bars" />
+      </Flex>
+    ) : (
+      children
+    );
+
+  return <AuthContext.Provider value={value}>{element}</AuthContext.Provider>;
 }
 
 AuthProvider.propTypes = { children: PropTypes.node };

@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import { Flex, Box, Title, Text } from '@mantine/core';
 
 function ListItem({ index, fields, item, lastNodeRef, onClick }) {
-  console.log();
   return (
     <Box
       ref={lastNodeRef}

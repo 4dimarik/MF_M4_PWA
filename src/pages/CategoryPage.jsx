@@ -71,7 +71,7 @@ export default function CategoryPage() {
       <h2>{routes.categories.nav.variations[category].label}</h2>
       <div>
         {isLoading ? (
-          <Loader variant="bars" />
+          <Loader variant="bars" m="auto" />
         ) : error ? (
           <div>Ошибка. Повторите попытку позже.</div>
         ) : (
