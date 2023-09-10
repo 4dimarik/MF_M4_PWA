@@ -1,8 +1,9 @@
-const staticCacheName = 'static-site-v3';
-const dynamicCacheName = 'dynamic-site-v3';
+const staticCacheName = 'static-site-v4';
+const dynamicCacheName = 'dynamic-site-v4';
 
 const ASSETS = [
   '/',
+  '/index.html',
   '/assets/icons/favicon-32x32.png',
   '/assets/Rick-And-Morty-Logo.png',
   '/assets/icons/android-chrome-192x192.png',
@@ -55,6 +56,6 @@ async function networkFirst(request) {
     return response;
   } catch (error) {
     const cached = await cache.match(request);
-    return cached ?? (await cached.match('/404'));
+    return cached ?? (await caches.match('/404'));
   }
 }

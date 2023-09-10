@@ -29,8 +29,6 @@ function AuthProvider({ children }) {
     signout,
   };
 
-  console.log(user);
-
   const element =
     user === undefined ? (
       <Flex justify="center">
